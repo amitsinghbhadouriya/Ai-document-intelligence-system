@@ -152,3 +152,8 @@ Section headings are now propagated as metadata to all child chunks.
 
 <!-- update 324 -->
 Token estimation uses heuristic 4 chars/token lookup for rapid indexing.
+
+<!-- update 353 -->
+# Chunking Engine Documentation
+
+Optimized character overlap to maintain sentence boundaries.
