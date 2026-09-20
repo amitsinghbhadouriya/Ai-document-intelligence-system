@@ -105,3 +105,6 @@ Q1: What dosage was administered in Phase II?
 
 <!-- update 317 -->
 Q2: How many parallel attention heads are used?
+
+<!-- update 318 -->
+Q3: Were any significant deficiencies reported?
