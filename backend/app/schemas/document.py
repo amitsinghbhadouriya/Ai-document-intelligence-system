@@ -52,3 +52,9 @@ class DocumentResponse(BaseModel):
 from pydantic import BaseModel
 class DocumentResponse(BaseModel):
     id: str
+
+<!-- update 306 -->
+# Document Pydantic Schemas
+from pydantic import BaseModel
+class DocumentResponse(BaseModel):
+    id: str
