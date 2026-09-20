@@ -54,3 +54,7 @@
 <!-- update 90 -->
 /* Responsive tables */
 .table-responsive { overflow-x: auto; }
+
+<!-- update 91 -->
+/* Citation badges */
+.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
