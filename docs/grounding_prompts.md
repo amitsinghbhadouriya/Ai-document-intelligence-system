@@ -199,3 +199,6 @@ Citation previews styled with monospace typography.
 # Grounding Prompts
 
 System prompt strictly forbids hallucinating facts not in context.
+
+<!-- update 463 -->
+Assistant responses automatically tag source chunks in square brackets.
