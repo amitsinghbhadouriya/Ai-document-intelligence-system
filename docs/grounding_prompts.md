@@ -76,3 +76,6 @@ System prompt strictly forbids hallucinating facts not in context.
 
 <!-- update 175 -->
 Assistant responses automatically tag source chunks in square brackets.
+
+<!-- update 176 -->
+Verifies named entities against context tokens to assign HIGH/LOW grounding.
