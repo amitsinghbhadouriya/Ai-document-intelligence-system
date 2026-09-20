@@ -157,3 +157,6 @@ Token estimation uses heuristic 4 chars/token lookup for rapid indexing.
 # Chunking Engine Documentation
 
 Optimized character overlap to maintain sentence boundaries.
+
+<!-- update 354 -->
+Enhanced regex pattern for splitting sentences across paragraphs.
