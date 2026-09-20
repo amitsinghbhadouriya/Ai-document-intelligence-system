@@ -10,3 +10,7 @@
 <!-- update 25 -->
 /* Pulse animation */
 @keyframes pulse { 0% { transform: scale(0.9); } }
+
+<!-- update 26 -->
+/* Responsive tables */
+.table-responsive { overflow-x: auto; }
