@@ -90,3 +90,6 @@ Optimized character overlap to maintain sentence boundaries.
 
 <!-- update 194 -->
 Enhanced regex pattern for splitting sentences across paragraphs.
+
+<!-- update 195 -->
+Section headings are now propagated as metadata to all child chunks.
