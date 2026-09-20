@@ -130,3 +130,8 @@ Fine-tuned rank fusion constant k=60 for balanced keyword/dense weighting.
 
 <!-- update 365 -->
 Filtered out retrieved chunks with similarity score < 0.70.
+
+<!-- update 395 -->
+# Hybrid Search
+
+RRF score = 1 / (60 + rank_dense) + 1 / (60 + rank_keyword).
