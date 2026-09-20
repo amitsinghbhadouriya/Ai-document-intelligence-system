@@ -14,3 +14,8 @@ Calculates Precision@K and Recall@K over test sets.
 
 <!-- update 64 -->
 Records p50, p90, and p99 query latency benchmarks.
+
+<!-- update 95 -->
+# Evaluation Metrics
+
+Calculates Precision@K and Recall@K over test sets.
