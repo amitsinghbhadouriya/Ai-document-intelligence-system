@@ -68,3 +68,8 @@ Verifies named entities against context tokens to assign HIGH/LOW grounding.
 
 <!-- update 145 -->
 Citation previews styled with monospace typography.
+
+<!-- update 174 -->
+# Grounding Prompts
+
+System prompt strictly forbids hallucinating facts not in context.
