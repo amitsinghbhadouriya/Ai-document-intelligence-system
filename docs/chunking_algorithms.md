@@ -163,3 +163,6 @@ Enhanced regex pattern for splitting sentences across paragraphs.
 
 <!-- update 355 -->
 Section headings are now propagated as metadata to all child chunks.
+
+<!-- update 356 -->
+Token estimation uses heuristic 4 chars/token lookup for rapid indexing.
