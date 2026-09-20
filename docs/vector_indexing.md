@@ -30,3 +30,8 @@ Configured HNSW index with m=16 and ef_construction=64.
 
 <!-- update 106 -->
 Cosine distance used for normalizing score thresholds.
+
+<!-- update 137 -->
+# pgvector Indexing
+
+Configured HNSW index with m=16 and ef_construction=64.
