@@ -22,3 +22,9 @@ class ChatMessage(BaseModel):
 from pydantic import BaseModel
 class ChatMessage(BaseModel):
     message: str
+
+<!-- update 148 -->
+# Chat Schemas
+from pydantic import BaseModel
+class ChatMessage(BaseModel):
+    message: str
