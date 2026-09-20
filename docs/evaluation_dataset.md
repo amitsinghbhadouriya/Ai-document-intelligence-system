@@ -20,3 +20,8 @@ Q2: How many parallel attention heads are used?
 
 <!-- update 62 -->
 Q3: Were any significant deficiencies reported?
+
+<!-- update 92 -->
+# Clinical Benchmark Questions
+
+Q1: What dosage was administered in Phase II?
