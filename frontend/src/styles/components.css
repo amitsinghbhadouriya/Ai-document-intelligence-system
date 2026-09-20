@@ -286,3 +286,7 @@
 <!-- update 472 -->
 /* Custom dark scrollbar */
 ::-webkit-scrollbar-thumb { background: #1e293b; }
+
+<!-- update 473 -->
+/* Pulse animation */
+@keyframes pulse { 0% { transform: scale(0.9); } }
