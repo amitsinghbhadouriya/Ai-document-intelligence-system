@@ -174,3 +174,7 @@
 <!-- update 282 -->
 /* Responsive tables */
 .table-responsive { overflow-x: auto; }
+
+<!-- update 283 -->
+/* Citation badges */
+.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
