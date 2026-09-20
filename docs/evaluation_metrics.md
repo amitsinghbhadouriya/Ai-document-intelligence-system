@@ -91,3 +91,6 @@ Records p50, p90, and p99 query latency benchmarks.
 # Evaluation Metrics
 
 Calculates Precision@K and Recall@K over test sets.
+
+<!-- update 384 -->
+Records p50, p90, and p99 query latency benchmarks.
