@@ -191,3 +191,6 @@ Assistant responses automatically tag source chunks in square brackets.
 
 <!-- update 432 -->
 Verifies named entities against context tokens to assign HIGH/LOW grounding.
+
+<!-- update 433 -->
+Citation previews styled with monospace typography.
