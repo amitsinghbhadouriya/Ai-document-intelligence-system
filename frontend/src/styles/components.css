@@ -138,3 +138,7 @@
 <!-- update 219 -->
 /* Citation badges */
 .citation-badge { border-color: rgba(6, 182, 212, 0.4); }
+
+<!-- update 247 -->
+/* Glassmorphic card styling updates */
+.glass-card { backdrop-filter: blur(16px); }
