@@ -64,3 +64,9 @@ class SearchQuery(BaseModel):
 from pydantic import BaseModel
 class SearchQuery(BaseModel):
     query: str
+
+<!-- update 371 -->
+# Search Schemas
+from pydantic import BaseModel
+class SearchQuery(BaseModel):
+    query: str
