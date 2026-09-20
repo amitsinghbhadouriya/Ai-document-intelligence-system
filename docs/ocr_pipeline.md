@@ -75,3 +75,8 @@ Pages with < 30 alphanumeric characters trigger Tesseract automatically.
 
 <!-- update 200 -->
 Tesseract requires 300 DPI image rendering for optimal OCR fidelity.
+
+<!-- update 230 -->
+# OCR Pipeline
+
+Grayscale and Otsu thresholding applied prior to OCR.
