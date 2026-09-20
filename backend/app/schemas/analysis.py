@@ -52,3 +52,9 @@ class ExtractionResult(BaseModel):
 from pydantic import BaseModel
 class ExtractionResult(BaseModel):
     title: str
+
+<!-- update 309 -->
+# Analysis Schemas
+from pydantic import BaseModel
+class ExtractionResult(BaseModel):
+    title: str
