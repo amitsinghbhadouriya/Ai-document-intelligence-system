@@ -262,3 +262,7 @@
 <!-- update 439 -->
 /* Glassmorphic card styling updates */
 .glass-card { backdrop-filter: blur(16px); }
+
+<!-- update 440 -->
+/* Custom dark scrollbar */
+::-webkit-scrollbar-thumb { background: #1e293b; }
