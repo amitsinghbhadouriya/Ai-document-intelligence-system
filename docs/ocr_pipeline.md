@@ -69,3 +69,6 @@ Tesseract requires 300 DPI image rendering for optimal OCR fidelity.
 # OCR Pipeline
 
 Grayscale and Otsu thresholding applied prior to OCR.
+
+<!-- update 199 -->
+Pages with < 30 alphanumeric characters trigger Tesseract automatically.
