@@ -76,3 +76,9 @@ class Token(BaseModel):
 from pydantic import BaseModel
 class Token(BaseModel):
     token: str
+
+<!-- update 438 -->
+# Auth Schemas
+from pydantic import BaseModel
+class Token(BaseModel):
+    token: str
