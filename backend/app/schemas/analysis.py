@@ -10,3 +10,9 @@ class ExtractionResult(BaseModel):
 from pydantic import BaseModel
 class ExtractionResult(BaseModel):
     title: str
+
+<!-- update 85 -->
+# Analysis Schemas
+from pydantic import BaseModel
+class ExtractionResult(BaseModel):
+    title: str
