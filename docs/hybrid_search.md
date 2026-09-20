@@ -17,3 +17,6 @@ RRF score = 1 / (60 + rank_dense) + 1 / (60 + rank_keyword).
 
 <!-- update 44 -->
 Fine-tuned rank fusion constant k=60 for balanced keyword/dense weighting.
+
+<!-- update 45 -->
+Filtered out retrieved chunks with similarity score < 0.70.
