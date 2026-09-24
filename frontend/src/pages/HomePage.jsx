@@ -133,7 +133,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Pipeline Visualizer Section */}
+      {/* Pipeline Architecture Section with SpotlightCards */}
       <section className="container py-5">
         <div className="text-center mb-5">
           <span className="tech-badge mb-2">Ingestion & Retrieval Architecture</span>
@@ -151,7 +151,7 @@ export default function HomePage() {
             { step: '04', title: 'Hybrid Search & RAG', desc: 'Dense vector similarity fused with BM25 keyword matching yields top-K chunks for the LLM to synthesize cited answers.', icon: ShieldCheck },
           ].map((item, index) => (
             <div key={index} className="col-md-6 col-lg-3">
-              <div className="glass-card p-4 h-100">
+              <SpotlightCard className="p-4 h-100">
                 <div className="d-flex justify-content-between align-items-center mb-3">
                   <div className="feature-icon-wrapper mb-0">
                     <item.icon size={24} />
@@ -160,54 +160,84 @@ export default function HomePage() {
                 </div>
                 <h5 className="text-white fw-bold mb-2">{item.title}</h5>
                 <p className="text-muted small mb-0" style={{ lineHeight: 1.6 }}>{item.desc}</p>
-              </div>
+              </SpotlightCard>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Bento Grid Features Showcase */}
       <section className="container py-5">
         <div className="text-center mb-5">
-          <span className="tech-badge mb-2">Capabilities</span>
+          <span className="tech-badge mb-2">SaaS Capabilities</span>
           <h2 className="display-6 fw-bold text-white">Engineered For Depth, Not Gimmicks</h2>
         </div>
 
         <div className="row g-4">
-          <div className="col-md-4">
-            <div className="glass-card p-4 h-100">
-              <div className="feature-icon-wrapper">
-                <ShieldCheck size={26} />
-              </div>
-              <h4 className="text-white fw-bold mb-2">Grounding & Citations</h4>
-              <p className="text-muted small">
-                Every generated response includes verifiable, clickable citations like <code>[1] Page 7</code>. If the uploaded files don't contain the answer, the model explicitly declines.
-              </p>
-            </div>
+          <div className="col-lg-7">
+            <TiltedCard maxTilt={8} scale={1.01}>
+              <SpotlightCard className="p-4 p-md-5 h-100">
+                <div className="d-flex align-items-center justify-content-between mb-3">
+                  <div className="feature-icon-wrapper mb-0">
+                    <ShieldCheck size={28} />
+                  </div>
+                  <GlowBadge variant="emerald" pulse={true}>Zero Hallucination</GlowBadge>
+                </div>
+                <h3 className="text-white fw-bold mb-3">Grounded RAG with Inline Citations</h3>
+                <p className="text-muted mb-4" style={{ lineHeight: 1.7 }}>
+                  Every synthesized answer is backed by verifiable document citations (e.g. <code>[Doc 1, Page 12]</code>). If the ground truth does not exist in the ingested knowledge base, the model gracefully declines.
+                </p>
+                <div className="d-flex flex-wrap gap-2">
+                  <span className="citation-pill">Page 4 • Section 2.1</span>
+                  <span className="citation-pill">Page 18 • Table 3</span>
+                  <span className="citation-pill">Page 42 • Appendix A</span>
+                </div>
+              </SpotlightCard>
+            </TiltedCard>
           </div>
 
-          <div className="col-md-4">
-            <div className="glass-card p-4 h-100">
-              <div className="feature-icon-wrapper">
-                <GitCompare size={26} />
-              </div>
-              <h4 className="text-white fw-bold mb-2">Multi-Doc Comparison</h4>
-              <p className="text-muted small">
-                Compare multiple research papers or contracts side-by-side. Automatically extracts objectives, algorithms, datasets, accuracy, and limitations into structured tables.
-              </p>
-            </div>
+          <div className="col-lg-5">
+            <TiltedCard maxTilt={8} scale={1.01}>
+              <SpotlightCard className="p-4 p-md-5 h-100">
+                <div className="d-flex align-items-center justify-content-between mb-3">
+                  <div className="feature-icon-wrapper mb-0">
+                    <GitCompare size={28} />
+                  </div>
+                  <GlowBadge variant="indigo" pulse={false}>Matrix Diff</GlowBadge>
+                </div>
+                <h3 className="text-white fw-bold mb-3">Multi-Doc Comparison</h3>
+                <p className="text-muted mb-0" style={{ lineHeight: 1.7 }}>
+                  Perform side-by-side analytical comparisons across research papers, financial reports, or vendor contracts. Automatically tabulate objectives, metrics, and risk factors.
+                </p>
+              </SpotlightCard>
+            </TiltedCard>
           </div>
 
-          <div className="col-md-4">
-            <div className="glass-card p-4 h-100">
-              <div className="feature-icon-wrapper">
-                <Search size={26} />
+          <div className="col-lg-5">
+            <SpotlightCard className="p-4 p-md-5 h-100">
+              <div className="feature-icon-wrapper mb-3">
+                <Search size={28} />
               </div>
-              <h4 className="text-white fw-bold mb-2">Semantic & Hybrid Search</h4>
-              <p className="text-muted small">
-                Search queries across your entire document repository using semantic intent or exact keyword matching with real-time similarity score gauges.
+              <h3 className="text-white fw-bold mb-3">Hybrid Search (Dense + BM25)</h3>
+              <p className="text-muted mb-0" style={{ lineHeight: 1.7 }}>
+                Combines cosine vector similarity (pgvector HNSW) with lexical BM25 token frequencies via Reciprocal Rank Fusion (RRF) for optimal relevance.
               </p>
-            </div>
+            </SpotlightCard>
+          </div>
+
+          <div className="col-lg-7">
+            <SpotlightCard className="p-4 p-md-5 h-100">
+              <div className="d-flex align-items-center justify-content-between mb-3">
+                <div className="feature-icon-wrapper mb-0">
+                  <Cpu size={28} />
+                </div>
+                <GlowBadge variant="cyan" pulse={true}>Structured Output</GlowBadge>
+              </div>
+              <h3 className="text-white fw-bold mb-3">JSON Entity Extraction & Summarization</h3>
+              <p className="text-muted mb-0" style={{ lineHeight: 1.7 }}>
+                Convert unstructured legal prose and financial figures into schema-validated JSON structures ready for enterprise workflows, automated audits, and CRM exports.
+              </p>
+            </SpotlightCard>
           </div>
         </div>
       </section>
