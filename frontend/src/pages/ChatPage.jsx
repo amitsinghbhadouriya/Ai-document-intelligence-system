@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   MessageSquare, Send, Sparkles, ShieldCheck, FileText, 
-  Plus, Layers, ExternalLink, X, Check, Bot, User as UserIcon
+  Plus, Layers, ExternalLink, X, Check, Bot, User as UserIcon, Zap
 } from 'lucide-react';
+import gsap from 'gsap';
 import { useDocs } from '../context/DocumentContext';
+import { GlowBadge, MagnetButton, ShinyText, SpotlightCard } from '../components/reactbits';
 
 export default function ChatPage() {
   const { documents, conversations, activeConvId, setActiveConvId, sendMessage, createNewConversation } = useDocs();
   const [inputText, setInputText] = useState('');
   const [activeCitation, setActiveCitation] = useState(null);
+  const messagesEndRef = useRef(null);
 
   const activeConv = conversations.find((c) => c.id === activeConvId) || conversations[0];
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [activeConv?.messages]);
 
   const handleSend = (e) => {
     e?.preventDefault();
@@ -30,13 +37,15 @@ export default function ChatPage() {
         {/* Left Sidebar: Conversations & Target Documents */}
         <div className="col-lg-3 d-flex flex-column gap-3">
           {/* New Chat Button */}
-          <button
-            onClick={() => createNewConversation('Research Chat ' + (conversations.length + 1))}
-            className="btn btn-modern-primary w-100 d-flex align-items-center justify-content-center gap-2"
-          >
-            <Plus size={18} />
-            <span>New RAG Session</span>
-          </button>
+          <MagnetButton magnetStrength={0.2} className="w-100">
+            <button
+              onClick={() => createNewConversation('Research Chat ' + (conversations.length + 1))}
+              className="btn btn-modern-primary w-100 d-flex align-items-center justify-content-center gap-2"
+            >
+              <Plus size={18} />
+              <span>New RAG Session</span>
+            </button>
+          </MagnetButton>
 
           {/* Conversations List */}
           <div className="glass-card p-3 flex-grow-1 overflow-auto" style={{ maxHeight: '38vh' }}>
@@ -59,7 +68,9 @@ export default function ChatPage() {
           <div className="glass-card p-3">
             <div className="d-flex justify-content-between align-items-center mb-2">
               <span className="text-dim small fw-bold text-uppercase">Knowledge Sources</span>
-              <span className="badge bg-primary-subtle text-primary" style={{ fontSize: '0.65rem' }}>Active Docs</span>
+              <GlowBadge variant="emerald" pulse={true}>
+                {documents.length} Indexed
+              </GlowBadge>
             </div>
             <div className="d-flex flex-column gap-2" style={{ maxHeight: '22vh', overflowY: 'auto' }}>
               {documents.map((doc) => (
@@ -80,16 +91,20 @@ export default function ChatPage() {
           <div className="glass-card d-flex flex-column flex-grow-1 p-3 p-md-4 position-relative" style={{ minHeight: '75vh' }}>
             
             {/* Chat Header */}
-            <div className="d-flex justify-content-between align-items-center pb-3 mb-3 border-bottom" style={{ borderColor: 'var(--border-subtle)' }}>
+            <div className="d-flex justify-content-between align-items-center pb-3 mb-3 border-bottom" style={{ borderColor: 'rgba(255, 255, 255, 0.08)' }}>
               <div className="d-flex align-items-center gap-2">
-                <Bot size={20} className="text-primary" />
+                <Bot size={22} className="text-primary" />
                 <div>
                   <h6 className="text-white fw-bold mb-0">{activeConv?.title || 'Document Q&A'}</h6>
-                  <span className="small text-muted" style={{ fontSize: '0.75rem' }}>Grounded Retrieval with Source Citations</span>
+                  <span className="small text-muted" style={{ fontSize: '0.75rem' }}>
+                    Grounded Retrieval with <ShinyText text="pgvector & Gemini RAG" speed={3} />
+                  </span>
                 </div>
               </div>
               <div className="d-flex align-items-center gap-2">
-                <span className="tech-badge"><ShieldCheck size={12} /> Anti-Hallucination Active</span>
+                <GlowBadge variant="emerald" pulse={true}>
+                  <ShieldCheck size={12} /> Grounded (Anti-Hallucination)
+                </GlowBadge>
               </div>
             </div>
 
@@ -101,19 +116,13 @@ export default function ChatPage() {
                   className={`d-flex gap-3 ${msg.role === 'user' ? 'justify-content-end' : 'justify-content-start'}`}
                 >
                   {msg.role === 'assistant' && (
-                    <div className="feature-icon-wrapper mb-0 flex-shrink-0" style={{ width: 34, height: 34 }}>
-                      <Bot size={18} />
+                    <div className="feature-icon-wrapper mb-0 flex-shrink-0" style={{ width: 36, height: 36 }}>
+                      <Bot size={18} className="text-primary" />
                     </div>
                   )}
 
                   <div
-                    className="p-3 rounded-4"
-                    style={{
-                      maxWidth: '82%',
-                      background: msg.role === 'user' ? 'linear-gradient(135deg, #6366f1, #4f46e5)' : 'rgba(255, 255, 255, 0.04)',
-                      border: '1px solid ' + (msg.role === 'user' ? 'transparent' : 'var(--border-subtle)'),
-                      color: '#ffffff',
-                    }}
+                    className={msg.role === 'user' ? 'chat-bubble-user' : 'chat-bubble-assistant'}
                   >
                     <div className="small mb-1 text-muted d-flex justify-content-between gap-3">
                       <span className="fw-semibold text-white">{msg.role === 'user' ? 'You' : 'DocuIntel Assistant'}</span>
@@ -131,13 +140,12 @@ export default function ChatPage() {
                     {/* Interactive Citation Buttons */}
                     {msg.citations && msg.citations.length > 0 && (
                       <div className="pt-2 border-top d-flex flex-wrap gap-2 align-items-center" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-                        <span className="text-dim small" style={{ fontSize: '0.75rem' }}>Verified Sources:</span>
+                        <span className="text-dim small" style={{ fontSize: '0.75rem' }}>Grounded Citations:</span>
                         {msg.citations.map((cite, idx) => (
                           <button
                             key={idx}
                             onClick={() => setActiveCitation(cite)}
-                            className="btn btn-sm btn-modern-outline py-0 px-2 d-inline-flex align-items-center gap-1 text-info"
-                            style={{ fontSize: '0.72rem', borderColor: 'rgba(6, 182, 212, 0.4)' }}
+                            className="citation-pill border-0"
                           >
                             <span>[{cite.citation_index}] {cite.document_name} &bull; Page {cite.page_number}</span>
                             <ExternalLink size={10} />
@@ -148,12 +156,13 @@ export default function ChatPage() {
                   </div>
 
                   {msg.role === 'user' && (
-                    <div className="feature-icon-wrapper mb-0 flex-shrink-0" style={{ width: 34, height: 34, background: 'rgba(99, 102, 241, 0.3)' }}>
-                      <UserIcon size={18} />
+                    <div className="feature-icon-wrapper mb-0 flex-shrink-0" style={{ width: 36, height: 36, background: 'rgba(99, 102, 241, 0.3)' }}>
+                      <UserIcon size={18} className="text-white" />
                     </div>
                   )}
                 </div>
               ))}
+              <div ref={messagesEndRef} />
             </div>
 
             {/* Suggested Starter Prompts */}
