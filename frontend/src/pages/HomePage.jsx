@@ -51,16 +51,28 @@ export default function HomePage() {
             Upload PDFs, DOCX, and scanned documents. Index them into high-dimensional vector spaces, perform hybrid semantic search, and chat with precision citations—zero hallucinations.
           </p>
 
+          {/* Decrypted Text Status Ticker */}
+          <div className="mb-4">
+            <span className="glass-pill px-3 py-1.5 small text-muted font-monospace d-inline-flex align-items-center gap-2">
+              <span className="pulse-dot success" />
+              <DecryptedText text="HYBRID VECTOR ENGINE & BM25 PIPELINE ACTIVE" speed={30} />
+            </span>
+          </div>
+
           <div className="d-flex flex-wrap justify-content-center gap-3 mb-5">
-            <Link to="/documents" className="btn btn-lg btn-modern-primary">
-              <FileText size={20} />
-              <span>Launch Document Hub</span>
-              <ArrowRight size={18} />
-            </Link>
-            <Link to="/chat" className="btn btn-lg btn-modern-outline">
-              <MessageSquare size={20} />
-              <span>Try RAG Chat</span>
-            </Link>
+            <MagnetButton magnetStrength={0.25}>
+              <Link to="/documents" className="btn btn-lg btn-modern-primary">
+                <FileText size={20} />
+                <span>Launch Document Hub</span>
+                <ArrowRight size={18} />
+              </Link>
+            </MagnetButton>
+            <MagnetButton magnetStrength={0.25}>
+              <Link to="/chat" className="btn btn-lg btn-modern-outline">
+                <MessageSquare size={20} />
+                <span>Try Grounded RAG Chat</span>
+              </Link>
+            </MagnetButton>
           </div>
 
           {/* Interactive Live System Diagnostic Card */}
