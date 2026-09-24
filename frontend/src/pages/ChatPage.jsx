@@ -201,14 +201,14 @@ export default function ChatPage() {
           </div>
         </div>
 
-        {/* Right Drawer: Clickable Citation Inspector */}
+        {/* Right Drawer: Clickable Citation Inspector with SpotlightCard */}
         {activeCitation && (
           <div className="col-lg-3">
-            <div className="glass-card p-4 h-100" style={{ background: '#0e1526', borderColor: 'rgba(6, 182, 212, 0.4)' }}>
+            <SpotlightCard className="p-4 h-100" style={{ background: '#0e1526', borderColor: 'rgba(6, 182, 212, 0.4)' }}>
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <div className="d-flex align-items-center gap-2">
                   <ShieldCheck size={18} className="text-info" />
-                  <h6 className="text-white fw-bold mb-0">Source Citation [{activeCitation.citation_index}]</h6>
+                  <h6 className="text-white fw-bold mb-0">Citation [{activeCitation.citation_index}]</h6>
                 </div>
                 <button
                   onClick={() => setActiveCitation(null)}
@@ -219,37 +219,53 @@ export default function ChatPage() {
               </div>
 
               <div className="mb-3">
-                <div className="text-dim small mb-1">Document Name</div>
+                <div className="text-dim small mb-1">Source Document</div>
                 <div className="fw-semibold text-white small text-break">{activeCitation.document_name}</div>
               </div>
 
               <div className="row g-2 mb-3">
                 <div className="col-6">
-                  <div className="p-2 rounded" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)' }}>
+                  <div className="p-2.5 rounded" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
                     <div className="text-dim small" style={{ fontSize: '0.7rem' }}>Page Number</div>
                     <div className="fw-bold text-white">Page {activeCitation.page_number}</div>
                   </div>
                 </div>
                 <div className="col-6">
-                  <div className="p-2 rounded" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)' }}>
+                  <div className="p-2.5 rounded" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
                     <div className="text-dim small" style={{ fontSize: '0.7rem' }}>Vector Similarity</div>
                     <div className="fw-bold text-info">{(activeCitation.similarity_score * 100).toFixed(1)}%</div>
                   </div>
                 </div>
               </div>
 
+              {/* Relevance Gauge */}
+              <div className="mb-3">
+                <div className="d-flex justify-content-between small text-dim mb-1">
+                  <span>Cosine Grounding Score</span>
+                  <span className="text-info font-monospace">{(activeCitation.similarity_score * 100).toFixed(0)}/100</span>
+                </div>
+                <div className="score-meter">
+                  <div
+                    className="score-meter-fill"
+                    style={{ width: `${Math.min(100, Math.max(30, activeCitation.similarity_score * 100))}%` }}
+                  />
+                </div>
+              </div>
+
               <div className="mb-3">
                 <div className="text-dim small mb-1">Section Context</div>
-                <span className="badge bg-secondary-subtle text-white">{activeCitation.section_title || 'General Content'}</span>
+                <GlowBadge variant="indigo" pulse={false}>
+                  {activeCitation.section_title || 'General Content'}
+                </GlowBadge>
               </div>
 
               <div>
                 <div className="text-dim small mb-1">Verbatim Retrieved Passage</div>
-                <div className="p-3 rounded font-monospace small text-white-50" style={{ background: 'rgba(0,0,0,0.4)', border: '1px solid var(--border-subtle)', lineHeight: 1.5, fontSize: '0.8rem' }}>
+                <div className="p-3 rounded font-monospace small text-white-50" style={{ background: 'rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.08)', lineHeight: 1.5, fontSize: '0.8rem' }}>
                   "{activeCitation.snippet}"
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           </div>
         )}
       </div>
