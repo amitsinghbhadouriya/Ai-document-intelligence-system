@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Sparkles, FileText, CheckCircle2, Copy, Download, Layers } from 'lucide-react';
+import { Sparkles, FileText, CheckCircle2, Copy, Download, Layers, Check } from 'lucide-react';
 import { useDocs } from '../context/DocumentContext';
+import { AnimatedTabs, SpotlightCard, GlowBadge, MagnetButton, ShinyText } from '../components/reactbits';
 
 export default function AnalysisPage() {
   const { documents } = useDocs();
@@ -47,7 +48,10 @@ export default function AnalysisPage() {
       {/* Header */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
         <div>
-          <h1 className="h2 text-white fw-bold mb-1">Document Analysis & Structured Extraction</h1>
+          <div className="d-flex align-items-center gap-2 mb-1">
+            <h1 className="h2 text-white fw-bold mb-0">Document Analysis & Structured Extraction</h1>
+            <GlowBadge variant="cyan" pulse={true}>Schema Validated</GlowBadge>
+          </div>
           <p className="text-muted small mb-0">
             Automated executive summarization, key takeaway extraction, and structured JSON entity parsing.
           </p>
@@ -56,7 +60,7 @@ export default function AnalysisPage() {
           <span className="text-dim small">Target Document:</span>
           <select
             className="form-select form-select-sm bg-transparent text-white"
-            style={{ background: '#111827', border: '1px solid var(--border-subtle)', borderRadius: 8, maxWidth: 240 }}
+            style={{ background: '#111827', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: 8, maxWidth: 240 }}
             value={selectedDocId}
             onChange={(e) => setSelectedDocId(e.target.value)}
           >
@@ -67,46 +71,49 @@ export default function AnalysisPage() {
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="d-flex gap-2 mb-4">
-        <button
-          onClick={() => setActiveTab('summary')}
-          className={`btn btn-sm ${activeTab === 'summary' ? 'btn-modern-primary' : 'btn-modern-outline'}`}
-        >
-          <Sparkles size={14} className="me-1" />
-          AI Summarization
-        </button>
-        <button
-          onClick={() => setActiveTab('structured')}
-          className={`btn btn-sm ${activeTab === 'structured' ? 'btn-modern-primary' : 'btn-modern-outline'}`}
-        >
-          <Layers size={14} className="me-1" />
-          Structured Entity Extraction
-        </button>
+      {/* Main Mode Tabs with AnimatedTabs */}
+      <div className="mb-4">
+        <AnimatedTabs
+          tabs={[
+            { id: 'summary', label: 'AI Summarization Engine' },
+            { id: 'structured', label: 'Structured JSON Extraction' },
+          ]}
+          activeTab={activeTab}
+          onChange={(tabId) => setActiveTab(tabId)}
+        />
       </div>
 
       {/* Tab 1: Summarization */}
       {activeTab === 'summary' && (
-        <div className="glass-card p-4 p-md-5">
-          <div className="d-flex flex-wrap gap-2 mb-4 pb-3 border-bottom" style={{ borderColor: 'var(--border-subtle)' }}>
-            <span className="text-dim small align-self-center me-2">Summary Format:</span>
-            {['executive', 'detailed', 'keypoints'].map((mode) => (
-              <button
-                key={mode}
-                onClick={() => setSummaryMode(mode)}
-                className={`btn btn-sm text-capitalize ${summaryMode === mode ? 'btn-modern-primary' : 'btn-modern-outline'}`}
-              >
-                {mode === 'keypoints' ? 'Key Bullet Points' : mode}
-              </button>
-            ))}
+        <SpotlightCard className="p-4 p-md-5">
+          <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-3 border-bottom" style={{ borderColor: 'rgba(255, 255, 255, 0.08)' }}>
+            <div className="d-flex align-items-center gap-2">
+              <span className="text-dim small">Summary Format:</span>
+              <AnimatedTabs
+                tabs={[
+                  { id: 'executive', label: 'Executive' },
+                  { id: 'detailed', label: 'Deep Technical' },
+                  { id: 'keypoints', label: 'Key Bullets' },
+                ]}
+                activeTab={summaryMode}
+                onChange={(mode) => setSummaryMode(mode)}
+              />
+            </div>
+            <GlowBadge variant="indigo" pulse={false}>
+              LLM Temperature: 0.2
+            </GlowBadge>
           </div>
 
           <div className="mb-2">
-            <h5 className="text-white fw-bold mb-3">{activeDoc?.original_filename} &mdash; Summary</h5>
+            <h5 className="text-white fw-bold mb-3 d-flex align-items-center gap-2">
+              <FileText size={18} className="text-primary" />
+              <span>{activeDoc?.original_filename}</span>
+              <span className="badge bg-secondary-subtle text-white font-monospace small">Synthesis</span>
+            </h5>
             {summaryMode === 'keypoints' ? (
-              <ul className="d-flex flex-column gap-2 text-muted mb-0">
+              <ul className="d-flex flex-column gap-2 text-muted mb-0 list-unstyled ps-0">
                 {summaries.keypoints.map((pt, i) => (
-                  <li key={i} className="d-flex align-items-start gap-2">
+                  <li key={i} className="d-flex align-items-start gap-2 p-2 rounded" style={{ background: 'rgba(255,255,255,0.02)' }}>
                     <CheckCircle2 size={16} className="text-primary flex-shrink-0 mt-1" />
                     <span>{pt}</span>
                   </li>
@@ -118,28 +125,30 @@ export default function AnalysisPage() {
               </p>
             )}
           </div>
-        </div>
+        </SpotlightCard>
       )}
 
       {/* Tab 2: Structured Entity Extraction */}
       {activeTab === 'structured' && (
-        <div className="glass-card p-4 p-md-5">
-          <div className="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom" style={{ borderColor: 'var(--border-subtle)' }}>
+        <SpotlightCard className="p-4 p-md-5">
+          <div className="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom" style={{ borderColor: 'rgba(255, 255, 255, 0.08)' }}>
             <div>
               <h5 className="text-white fw-bold mb-0">Extracted Structured Knowledge Schema</h5>
               <span className="text-muted small">Standardized JSON representation parsed from document content</span>
             </div>
-            <button onClick={handleCopyJSON} className="btn btn-sm btn-modern-primary d-flex align-items-center gap-1">
-              <Copy size={14} />
-              <span>{copied ? 'Copied JSON!' : 'Copy JSON'}</span>
-            </button>
+            <MagnetButton magnetStrength={0.25}>
+              <button onClick={handleCopyJSON} className="btn btn-sm btn-modern-primary d-flex align-items-center gap-1.5">
+                {copied ? <Check size={14} /> : <Copy size={14} />}
+                <span>{copied ? 'Copied JSON!' : 'Copy Schema'}</span>
+              </button>
+            </MagnetButton>
           </div>
 
           <div className="row g-4">
             <div className="col-lg-7">
               <div className="d-flex flex-column gap-3">
                 {Object.entries(structuredData).map(([key, value]) => (
-                  <div key={key} className="p-3 rounded" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-subtle)' }}>
+                  <div key={key} className="p-3 rounded" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
                     <div className="text-dim small text-uppercase font-monospace" style={{ fontSize: '0.72rem' }}>
                       {key.replace(/_/g, ' ')}
                     </div>
@@ -152,13 +161,13 @@ export default function AnalysisPage() {
             </div>
 
             <div className="col-lg-5">
-              <div className="text-dim small fw-bold text-uppercase mb-2">Raw JSON Payload</div>
+              <div className="text-dim small fw-bold text-uppercase mb-2">Schema-Validated JSON Output</div>
               <pre className="code-preview" style={{ maxHeight: 480, overflowY: 'auto' }}>
                 {JSON.stringify(structuredData, null, 2)}
               </pre>
             </div>
           </div>
-        </div>
+        </SpotlightCard>
       )}
     </div>
   );
