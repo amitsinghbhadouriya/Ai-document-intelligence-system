@@ -129,10 +129,10 @@ export default function DocumentsPage() {
         </div>
       </div>
 
-      {/* Search & Filter Toolbar */}
+      {/* Search & Filter Toolbar with AnimatedTabs */}
       <div className="glass-card p-3 mb-4">
-        <div className="row g-2 align-items-center">
-          <div className="col-md-6">
+        <div className="row g-3 align-items-center">
+          <div className="col-lg-5">
             <div className="input-group">
               <span className="input-group-text bg-transparent border-0 text-muted ps-2">
                 <Search size={18} />
@@ -146,16 +146,17 @@ export default function DocumentsPage() {
               />
             </div>
           </div>
-          <div className="col-md-6 d-flex justify-content-md-end gap-2">
-            {['ALL', 'PDF', 'DOCX', 'OCR'].map((type) => (
-              <button
-                key={type}
-                className={`btn btn-sm ${filterType === type ? 'btn-modern-primary' : 'btn-modern-outline'}`}
-                onClick={() => setFilterType(type)}
-              >
-                {type}
-              </button>
-            ))}
+          <div className="col-lg-7 d-flex justify-content-lg-end">
+            <AnimatedTabs
+              tabs={[
+                { id: 'ALL', label: 'All Documents' },
+                { id: 'PDF', label: 'PDF' },
+                { id: 'DOCX', label: 'DOCX' },
+                { id: 'OCR', label: 'Scanned (OCR)' },
+              ]}
+              activeTab={filterType}
+              onChange={(tabId) => setFilterType(tabId)}
+            />
           </div>
         </div>
       </div>
