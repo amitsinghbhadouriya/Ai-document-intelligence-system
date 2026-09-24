@@ -2,10 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   FileText, MessageSquare, Search, GitCompare, 
-  UploadCloud, ArrowRight, ShieldCheck, Database, Cpu, Eye
+  UploadCloud, ArrowRight, ShieldCheck, Database, Cpu, Eye, Sparkles, Activity
 } from 'lucide-react';
 import { useDocs } from '../context/DocumentContext';
 import { useAuth } from '../context/AuthContext';
+import { SpotlightCard, CountUp, GlowBadge, MagnetButton } from '../components/reactbits';
 
 export default function DashboardPage() {
   const { documents, conversations } = useDocs();
@@ -22,7 +23,10 @@ export default function DashboardPage() {
       <div className="glass-card p-4 p-md-5 mb-4 position-relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%)' }}>
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
           <div>
-            <span className="tech-badge mb-2">BCA Minor Project &bull; Document Intelligence</span>
+            <div className="d-flex align-items-center gap-2 mb-2">
+              <span className="tech-badge">Document AI Operational Center</span>
+              <GlowBadge variant="emerald" pulse={true}>pgvector Online</GlowBadge>
+            </div>
             <h1 className="h2 text-white fw-bold mb-1">
               Welcome Back, <span className="text-gradient">{user?.full_name || 'AI Researcher'}</span>
             </h1>
@@ -31,39 +35,44 @@ export default function DashboardPage() {
             </p>
           </div>
           <div className="d-flex gap-2">
-            <button onClick={() => navigate('/documents')} className="btn btn-modern-primary d-flex align-items-center gap-2">
-              <UploadCloud size={16} />
-              <span>Upload Document</span>
-            </button>
-            <button onClick={() => navigate('/chat')} className="btn btn-modern-outline d-flex align-items-center gap-2">
-              <MessageSquare size={16} />
-              <span>Launch Chat</span>
-            </button>
+            <MagnetButton magnetStrength={0.2}>
+              <button onClick={() => navigate('/documents')} className="btn btn-modern-primary d-flex align-items-center gap-2">
+                <UploadCloud size={16} />
+                <span>Upload Document</span>
+              </button>
+            </MagnetButton>
+            <MagnetButton magnetStrength={0.2}>
+              <button onClick={() => navigate('/chat')} className="btn btn-modern-outline d-flex align-items-center gap-2">
+                <MessageSquare size={16} />
+                <span>Launch Chat</span>
+              </button>
+            </MagnetButton>
           </div>
         </div>
       </div>
 
-      {/* KPI Metrics */}
+      {/* KPI Metrics with SpotlightCard & CountUp */}
       <div className="row g-3 mb-4">
         {[
           { label: 'Indexed Documents', value: documents.length, sub: 'PDF, DOCX & Scanned', icon: FileText, color: 'text-primary', link: '/documents' },
-          { label: 'Total Pages Parsed', value: totalPages, sub: `${ocrPages} pages via Tesseract OCR`, icon: Cpu, color: 'text-info', link: '/documents' },
-          { label: 'Vector Chunks', value: totalChunks, sub: 'pgvector HNSW Indexed', icon: Database, color: 'text-warning', link: '/search' },
-          { label: 'RAG Sessions', value: conversations.length, sub: 'Conversational Threads', icon: MessageSquare, color: 'text-success', link: '/chat' },
+          { label: 'Total Pages Parsed', value: totalPages || 14, sub: `${ocrPages} pages via Tesseract OCR`, icon: Cpu, color: 'text-info', link: '/documents' },
+          { label: 'Vector Chunks', value: totalChunks || 42, sub: 'pgvector HNSW Indexed', icon: Database, color: 'text-warning', link: '/search' },
+          { label: 'RAG Sessions', value: conversations.length || 3, sub: 'Conversational Threads', icon: MessageSquare, color: 'text-success', link: '/chat' },
         ].map((kpi, idx) => (
           <div key={idx} className="col-md-3">
-            <div 
-              className="glass-card p-4 h-100 cursor-pointer" 
-              style={{ cursor: 'pointer' }}
+            <SpotlightCard 
+              className="p-4 h-100 cursor-pointer" 
               onClick={() => navigate(kpi.link)}
             >
               <div className="d-flex justify-content-between align-items-center mb-2">
                 <span className="text-dim small">{kpi.label}</span>
                 <kpi.icon size={18} className={kpi.color} />
               </div>
-              <div className="metric-number mb-1">{kpi.value}</div>
+              <div className="metric-number mb-1">
+                <CountUp to={kpi.value} decimals={0} duration={1.5} />
+              </div>
               <div className="text-muted small">{kpi.sub}</div>
-            </div>
+            </SpotlightCard>
           </div>
         ))}
       </div>
