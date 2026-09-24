@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 import { 
   FileText, Search, MessageSquare, GitCompare, Sparkles, 
   ArrowRight, ShieldCheck, Database, Cpu, CheckCircle2,
-  Layers, Terminal, RefreshCw
+  Layers, Terminal, RefreshCw, Zap, Shield, Check
 } from 'lucide-react';
 import { systemService } from '../services/api';
+import { 
+  ParticlesBackground, SplitText, ShinyText, DecryptedText, 
+  MagnetButton, CountUp, SpotlightCard, TiltedCard, BentoGrid, 
+  BentoCard, GlowBadge, TerminalBox 
+} from '../components/reactbits';
 
 export default function HomePage() {
   const [healthData, setHealthData] = useState(null);
@@ -24,19 +29,21 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="pb-5">
+    <div className="pb-5 position-relative">
       {/* Hero Section */}
-      <section className="py-5 text-center position-relative overflow-hidden" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
+      <section className="py-5 text-center position-relative overflow-hidden" style={{ minHeight: '82vh', display: 'flex', alignItems: 'center' }}>
+        <ParticlesBackground particleCount={50} speed={0.5} maxDistance={100} />
         <div className="container position-relative" style={{ zIndex: 2 }}>
           {/* Tag badge */}
           <div className="d-inline-flex align-items-center gap-2 px-3 py-1 mb-4 rounded-pill glass-card" style={{ border: '1px solid rgba(99, 102, 241, 0.4)' }}>
             <Sparkles size={16} className="text-warning" />
             <span className="small fw-semibold text-gradient">Next-Gen Document AI & Grounded RAG</span>
-            <span className="badge bg-primary rounded-pill px-2 py-1" style={{ fontSize: '0.65rem' }}>v1.0</span>
+            <span className="badge bg-primary rounded-pill px-2 py-0.5" style={{ fontSize: '0.65rem' }}>v1.0-PRO</span>
           </div>
 
           <h1 className="display-4 fw-extrabold mb-3" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)', lineHeight: 1.15 }}>
-            Transform Documents into <br />
+            <SplitText text="Transform Documents into" by="words" delay={0.05} />
+            <br />
             <span className="text-gradient">Intelligent Knowledge Assets</span>
           </h1>
 
