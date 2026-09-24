@@ -278,6 +278,39 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Live Pipeline Terminal Stream Showcase */}
+      <section className="container py-5">
+        <div className="row g-4 align-items-center">
+          <div className="col-lg-5">
+            <span className="tech-badge mb-2">Deterministic Execution</span>
+            <h2 className="display-6 fw-bold text-white mb-3">Live RAG Pipeline Execution Trace</h2>
+            <p className="text-muted mb-4" style={{ lineHeight: 1.7 }}>
+              Watch how our automated ingestion pipeline breaks down multi-page documents, detects structures, generates normalized 768-D vector embeddings, and builds a dual inverted index.
+            </p>
+            <div className="d-flex flex-column gap-2 mb-4">
+              <div className="d-flex align-items-center gap-2 text-muted small">
+                <span className="pulse-dot success" />
+                <span>Zero text truncation across table boundaries</span>
+              </div>
+              <div className="d-flex align-items-center gap-2 text-muted small">
+                <span className="pulse-dot success" />
+                <span>Deterministic cosine vector + BM25 reciprocal rank fusion</span>
+              </div>
+              <div className="d-flex align-items-center gap-2 text-muted small">
+                <span className="pulse-dot success" />
+                <span>Exact page-level and chunk-level citation links</span>
+              </div>
+            </div>
+            <Link to="/documents" className="btn btn-modern-primary">
+              Test Live Ingestion <ArrowRight size={16} />
+            </Link>
+          </div>
+          <div className="col-lg-7">
+            <TerminalBox title="docuintel_rag_worker.py" />
+          </div>
+        </div>
+      </section>
+
       {/* CTA Box */}
       <section className="container py-5">
         <div className="glass-card p-5 text-center position-relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%)' }}>
