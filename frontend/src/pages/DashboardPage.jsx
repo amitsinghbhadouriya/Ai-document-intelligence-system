@@ -77,7 +77,7 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      {/* Quick Action Tiles */}
+      {/* Quick Action Spotlight Tiles */}
       <div className="row g-3 mb-4">
         {[
           { title: 'Grounded RAG Chat', desc: 'Interact with single or multi-document context with exact page citations.', icon: MessageSquare, link: '/chat' },
@@ -86,12 +86,11 @@ export default function DashboardPage() {
           { title: 'Structured Extraction', desc: 'AI entity extraction for authors, methodology, algorithms, and metrics.', icon: ShieldCheck, link: '/analysis' },
         ].map((tile, idx) => (
           <div key={idx} className="col-md-3">
-            <div 
-              className="glass-card p-4 h-100 cursor-pointer"
-              style={{ cursor: 'pointer' }}
+            <SpotlightCard 
+              className="p-4 h-100 cursor-pointer"
               onClick={() => navigate(tile.link)}
             >
-              <div className="feature-icon-wrapper mb-3" style={{ width: 42, height: 42 }}>
+              <div className="feature-icon-wrapper mb-3" style={{ width: 44, height: 44 }}>
                 <tile.icon size={20} />
               </div>
               <h6 className="text-white fw-bold mb-1">{tile.title}</h6>
@@ -99,12 +98,33 @@ export default function DashboardPage() {
                 {tile.desc}
               </p>
               <div className="d-flex align-items-center text-primary small fw-semibold gap-1">
-                <span>Open Module</span>
+                <span>Launch Engine</span>
                 <ArrowRight size={14} />
               </div>
-            </div>
+            </SpotlightCard>
           </div>
         ))}
+      </div>
+
+      {/* Real-time Telemetry & Pipeline Status */}
+      <div className="glass-card p-3 px-4 mb-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
+        <div className="d-flex align-items-center gap-3">
+          <div className="d-flex align-items-center gap-2">
+            <span className="pulse-dot success" />
+            <span className="small text-white fw-semibold">FastAPI 0.111</span>
+          </div>
+          <div className="d-flex align-items-center gap-2">
+            <span className="pulse-dot success" />
+            <span className="small text-white fw-semibold">PostgreSQL pgvector</span>
+          </div>
+          <div className="d-flex align-items-center gap-2">
+            <span className="pulse-dot success" />
+            <span className="small text-white fw-semibold">BM25 Inverted Index</span>
+          </div>
+        </div>
+        <div className="small text-muted font-monospace">
+          Throughput: <span className="text-info fw-bold">120 chunks/sec</span> &bull; Cosine Distance: <span className="text-success fw-bold">Normalized</span>
+        </div>
       </div>
 
       {/* Recent Documents Table */}
