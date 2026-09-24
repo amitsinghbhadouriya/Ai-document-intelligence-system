@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { useDocs } from '../context/DocumentContext';
 import DocumentModal from '../components/documents/DocumentModal';
+import { GlowBadge, AnimatedTabs, SpotlightCard, MagnetButton } from '../components/reactbits';
 
 export default function DocumentsPage() {
   const { documents, uploadDocument, deleteDocument } = useDocs();
@@ -109,21 +110,22 @@ export default function DocumentsPage() {
         </div>
       )}
 
-      {/* Drag & Drop Card */}
+      {/* Drag & Drop Upload Zone with Neon Glow */}
       <div
-        className="glass-card p-4 p-md-5 text-center mb-4 cursor-pointer"
-        style={{ borderStyle: 'dashed', borderWidth: 2, borderColor: 'rgba(99, 102, 241, 0.35)', cursor: 'pointer' }}
+        className="upload-dropzone mb-4 cursor-pointer"
         onClick={() => fileInputRef.current?.click()}
       >
-        <div className="feature-icon-wrapper mx-auto mb-3">
-          <UploadCloud size={28} />
+        <div className="feature-icon-wrapper mx-auto mb-3" style={{ width: 56, height: 56 }}>
+          <UploadCloud size={30} className="text-primary" />
         </div>
-        <h5 className="text-white fw-bold mb-1">Click to Upload or Drag & Drop Documents</h5>
-        <p className="text-muted small mb-2">Supports PDF, DOCX, and TXT files (up to 25 MB)</p>
-        <div className="d-flex justify-content-center gap-2">
-          <span className="tech-badge">PyMuPDF Engine</span>
-          <span className="tech-badge">Tesseract OCR</span>
-          <span className="tech-badge">pgvector HNSW</span>
+        <h4 className="text-white fw-bold mb-2">Click to Upload or Drag & Drop Documents</h4>
+        <p className="text-muted small mb-3 mx-auto" style={{ maxWidth: 460 }}>
+          Directly parses PDF structure, DOCX headings, and extracts scanned image text using Tesseract OCR.
+        </p>
+        <div className="d-flex flex-wrap justify-content-center gap-2">
+          <GlowBadge variant="indigo" pulse={false}>PyMuPDF Parser</GlowBadge>
+          <GlowBadge variant="emerald" pulse={true}>Tesseract OCR Active</GlowBadge>
+          <GlowBadge variant="cyan" pulse={false}>pgvector Embeddings (768-D)</GlowBadge>
         </div>
       </div>
 
