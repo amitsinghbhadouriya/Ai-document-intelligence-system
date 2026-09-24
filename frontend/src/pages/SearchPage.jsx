@@ -117,11 +117,16 @@ export default function SearchPage() {
         </div>
       </div>
 
-      {/* Results Feed */}
+      {/* Results Feed with SpotlightCards & Score Meters */}
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <span className="text-dim small fw-bold text-uppercase">
-          {filteredResults.length} Relevant Passages Found
-        </span>
+        <div className="d-flex align-items-center gap-2">
+          <span className="text-dim small fw-bold text-uppercase">
+            {filteredResults.length} Relevant Passages Found
+          </span>
+          <GlowBadge variant="indigo" pulse={false}>
+            Top-K Retrieval
+          </GlowBadge>
+        </div>
         <span className="text-muted small">Scored by Dense Cosine Similarity + BM25 RRF</span>
       </div>
 
@@ -131,40 +136,48 @@ export default function SearchPage() {
             No matching passages found for "{query}". Try another keyword or switch retrieval modes.
           </div>
         ) : (
-          filteredResults.map((res, i) => (
-            <div key={i} className="glass-card p-4">
-              <div className="d-flex justify-content-between align-items-start mb-2">
-                <div className="d-flex align-items-center gap-2">
-                  <FileText size={18} className="text-primary" />
-                  <span className="fw-bold text-white small">{res.doc_name}</span>
-                  <span className="badge bg-secondary-subtle text-white font-monospace" style={{ fontSize: '0.7rem' }}>
-                    Page {res.page_number}
-                  </span>
-                  <span className="text-muted small">&bull; {res.section_title}</span>
+          filteredResults.map((res, i) => {
+            const matchPercent = (res.similarity * 100).toFixed(1);
+            return (
+              <SpotlightCard key={i} className="p-4">
+                <div className="d-flex justify-content-between align-items-start mb-2">
+                  <div className="d-flex align-items-center gap-2 flex-wrap">
+                    <FileText size={18} className="text-primary" />
+                    <span className="fw-bold text-white small">{res.doc_name}</span>
+                    <span className="badge bg-secondary-subtle text-white font-monospace" style={{ fontSize: '0.7rem' }}>
+                      Page {res.page_number}
+                    </span>
+                    <span className="text-muted small">&bull; {res.section_title}</span>
+                  </div>
+                  <div className="d-flex align-items-center gap-2">
+                    <span className="badge bg-info-subtle text-info font-monospace">
+                      {matchPercent}% Match
+                    </span>
+                  </div>
                 </div>
-                <div className="d-flex align-items-center gap-2">
-                  <span className="badge bg-info-subtle text-info font-monospace">
-                    {(res.similarity * 100).toFixed(1)}% Match
-                  </span>
+
+                {/* Relevance Score Meter Bar */}
+                <div className="score-meter mb-3">
+                  <div className="score-meter-fill" style={{ width: `${Math.min(100, Math.max(20, matchPercent))}%` }} />
                 </div>
-              </div>
 
-              <p className="text-white-50 font-monospace small mb-3" style={{ fontSize: '0.88rem', lineHeight: 1.6 }}>
-                "{res.content}"
-              </p>
+                <p className="text-white-50 font-monospace small mb-3" style={{ fontSize: '0.88rem', lineHeight: 1.6 }}>
+                  "{res.content}"
+                </p>
 
-              <div className="d-flex justify-content-end">
-                <button
-                  onClick={() => navigate('/chat')}
-                  className="btn btn-sm btn-modern-outline d-flex align-items-center gap-1"
-                >
-                  <MessageSquare size={14} />
-                  <span>Ask in RAG Chat</span>
-                  <ArrowRight size={14} />
-                </button>
-              </div>
-            </div>
-          ))
+                <div className="d-flex justify-content-end">
+                  <button
+                    onClick={() => navigate('/chat')}
+                    className="btn btn-sm btn-modern-outline d-flex align-items-center gap-1.5"
+                  >
+                    <MessageSquare size={14} />
+                    <span>Ask in RAG Chat</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+              </SpotlightCard>
+            );
+          })
         )}
       </div>
     </div>
