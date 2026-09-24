@@ -1,292 +1,141 @@
-
-<!-- update 23 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 24 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 25 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 26 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 27 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 55 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 56 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 57 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 58 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 59 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 87 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 88 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 89 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 90 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 91 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 119 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 120 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 121 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 122 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 123 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 151 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 152 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 153 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 154 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 155 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 183 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 184 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 185 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 186 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 187 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 215 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 216 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 217 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 218 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 219 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 247 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 248 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 249 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 250 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 251 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 279 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 280 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 281 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 282 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 283 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 311 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 312 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 313 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 314 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 315 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 343 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 344 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 345 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 346 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 347 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 375 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 376 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 377 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 378 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 379 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 407 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 408 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 409 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 410 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 411 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 439 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 440 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 441 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
-
-<!-- update 442 -->
-/* Responsive tables */
-.table-responsive { overflow-x: auto; }
-
-<!-- update 443 -->
-/* Citation badges */
-.citation-badge { border-color: rgba(6, 182, 212, 0.4); }
-
-<!-- update 471 -->
-/* Glassmorphic card styling updates */
-.glass-card { backdrop-filter: blur(16px); }
-
-<!-- update 472 -->
-/* Custom dark scrollbar */
-::-webkit-scrollbar-thumb { background: #1e293b; }
-
-<!-- update 473 -->
-/* Pulse animation */
-@keyframes pulse { 0% { transform: scale(0.9); } }
+/* ==============================================================================
+   AI Document Intelligence Platform - Component System Stylesheet
+   ============================================================================== */
+
+/* Modern Form Controls */
+.form-control-modern,
+.form-control {
+  background-color: rgba(15, 23, 42, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+  border-radius: 10px !important;
+  padding: 0.65rem 1rem !important;
+  transition: all 0.25s ease !important;
+}
+
+.form-control-modern:focus,
+.form-control:focus {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25) !important;
+  color: #ffffff !important;
+}
+
+.form-control::placeholder {
+  color: #64748b !important;
+}
+
+/* Dropzone Ingestion Area */
+.upload-dropzone {
+  border: 2px dashed rgba(99, 102, 241, 0.35);
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.drag-active {
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.08);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Chat Message Bubbles */
+.chat-bubble-user {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #ffffff;
+  border-radius: 18px 18px 4px 18px;
+  padding: 0.85rem 1.25rem;
+  max-width: 80%;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+}
+
+.chat-bubble-assistant {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  border-radius: 18px 18px 18px 4px;
+  padding: 1.1rem 1.35rem;
+  max-width: 85%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal Backdrop & Dialog */
+.modal-content {
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 35px rgba(99, 102, 241, 0.2) !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 1.25rem 1.5rem !important;
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 1rem 1.5rem !important;
+}
+
+/* Document Cards */
+.document-card {
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.document-card:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.5);
+}
+
+/* Modern Tables */
+.table-dark-modern {
+  color: #e2e8f0;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table-dark-modern th {
+  background: rgba(15, 23, 42, 0.8);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.table-dark-modern td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.table-dark-modern tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Citation Badges */
+.citation-badge {
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  color: #38bdf8;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
