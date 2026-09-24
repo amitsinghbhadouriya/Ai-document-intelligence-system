@@ -75,6 +75,42 @@ export default function HomePage() {
             </MagnetButton>
           </div>
 
+          {/* Empirical Benchmarks Highlights with CountUp */}
+          <div className="row g-3 justify-content-center mx-auto mb-5" style={{ maxWidth: 860 }}>
+            <div className="col-6 col-md-3">
+              <div className="glass-card p-3 text-center">
+                <div className="metric-number text-gradient">
+                  <CountUp to={99.4} decimals={1} suffix="%" duration={2} />
+                </div>
+                <div className="small text-muted mt-1">Grounding Accuracy</div>
+              </div>
+            </div>
+            <div className="col-6 col-md-3">
+              <div className="glass-card p-3 text-center">
+                <div className="metric-number text-white">
+                  <CountUp to={768} decimals={0} suffix="-D" duration={1.5} />
+                </div>
+                <div className="small text-muted mt-1">Dense Embeddings</div>
+              </div>
+            </div>
+            <div className="col-6 col-md-3">
+              <div className="glass-card p-3 text-center">
+                <div className="metric-number text-gradient-cyan">
+                  <CountUp to={142} decimals={0} suffix="ms" duration={1.8} />
+                </div>
+                <div className="small text-muted mt-1">Hybrid Retrieval</div>
+              </div>
+            </div>
+            <div className="col-6 col-md-3">
+              <div className="glass-card p-3 text-center">
+                <div className="metric-number text-white">
+                  <CountUp to={100} decimals={0} suffix="%" duration={2.2} />
+                </div>
+                <div className="small text-muted mt-1">Cited Grounding</div>
+              </div>
+            </div>
+          </div>
+
           {/* Interactive Live System Diagnostic Card */}
           <div className="glass-card mx-auto p-4 text-start" style={{ maxWidth: 860 }}>
             <div className="d-flex justify-content-between align-items-center mb-3">
