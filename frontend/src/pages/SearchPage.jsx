@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, SlidersHorizontal, FileText, ArrowRight, MessageSquare, Sparkles, Layers } from 'lucide-react';
+import { Search, SlidersHorizontal, FileText, ArrowRight, MessageSquare, Sparkles, Layers, Zap } from 'lucide-react';
 import { useDocs } from '../context/DocumentContext';
+import { AnimatedTabs, MagnetButton, SpotlightCard, GlowBadge, CountUp } from '../components/reactbits';
 
 export default function SearchPage() {
   const { documents } = useDocs();
@@ -38,23 +39,26 @@ export default function SearchPage() {
   return (
     <div className="container py-5">
       {/* Header */}
-      <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+      <div className="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-4">
         <div>
-          <h1 className="h2 text-white fw-bold mb-1">Global Semantic & Hybrid Search</h1>
+          <div className="d-flex align-items-center gap-2 mb-1">
+            <h1 className="h2 text-white fw-bold mb-0">Global Semantic & Hybrid Search</h1>
+            <GlowBadge variant="cyan" pulse={true}>RRF k=60 Active</GlowBadge>
+          </div>
           <p className="text-muted small mb-0">
             Query across high-dimensional vector spaces and exact keywords with Reciprocal Rank Fusion.
           </p>
         </div>
-        <div className="d-flex gap-2">
-          {['hybrid', 'semantic', 'keyword'].map((mode) => (
-            <button
-              key={mode}
-              className={`btn btn-sm text-capitalize ${retrievalMode === mode ? 'btn-modern-primary' : 'btn-modern-outline'}`}
-              onClick={() => setRetrievalMode(mode)}
-            >
-              {mode} Mode
-            </button>
-          ))}
+        <div>
+          <AnimatedTabs
+            tabs={[
+              { id: 'hybrid', label: 'Hybrid (Vector + BM25)' },
+              { id: 'semantic', label: 'Dense Semantic' },
+              { id: 'keyword', label: 'BM25 Keyword' },
+            ]}
+            activeTab={retrievalMode}
+            onChange={(mode) => setRetrievalMode(mode)}
+          />
         </div>
       </div>
 
