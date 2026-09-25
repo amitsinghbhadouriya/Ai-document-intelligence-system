@@ -28,8 +28,8 @@ export default function SearchPage() {
     if (query.trim()) {
       const q = query.toLowerCase();
       return (
-        item.content.toLowerCase().includes(q) ||
-        item.doc_name.toLowerCase().includes(q) ||
+        (item.content && item.content.toLowerCase().includes(q)) ||
+        (item.doc_name && item.doc_name.toLowerCase().includes(q)) ||
         (item.section_title && item.section_title.toLowerCase().includes(q))
       );
     }

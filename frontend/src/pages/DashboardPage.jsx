@@ -156,7 +156,7 @@ export default function DashboardPage() {
                       <span>{doc.original_filename}</span>
                     </div>
                   </td>
-                  <td className="text-muted text-uppercase">{doc.file_type.includes('pdf') ? 'PDF' : 'DOCX'}</td>
+                  <td className="text-muted text-uppercase">{doc.file_type?.includes('pdf') ? 'PDF' : 'DOCX'}</td>
                   <td className="text-muted">{doc.total_pages} pages</td>
                   <td>
                     <span className="badge bg-success-subtle text-success">

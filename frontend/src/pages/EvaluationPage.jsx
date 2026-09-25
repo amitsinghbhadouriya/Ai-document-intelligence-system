@@ -119,7 +119,7 @@ export default function EvaluationPage() {
               </tr>
             </thead>
             <tbody>
-              {EVALUATION_METRICS.test_cases.map((tc) => (
+              {(EVALUATION_METRICS.test_cases || []).map((tc) => (
                 <tr key={tc.id} style={{ borderColor: 'rgba(255, 255, 255, 0.04)' }}>
                   <td className="fw-semibold text-white">{tc.query}</td>
                   <td className="text-muted">{tc.doc}</td>

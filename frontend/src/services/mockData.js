@@ -220,4 +220,39 @@ export const EVALUATION_METRICS = {
     { name: 'Dataset 4: Legal Contracts', relevance: 86, citation: 92, grounded: 89 },
     { name: 'Dataset 5: Scanned OCR Docs', relevance: 84, citation: 89, grounded: 87 },
   ],
+  test_cases: [
+    {
+      id: 'tc-001',
+      query: 'What parallel attention layers are used in Transformer architecture?',
+      doc: 'Transformer_Neural_Networks_Attention.pdf',
+      expected_page: 'Page 3 (Sec 3)',
+      grounding_score: 0.98,
+      latency_ms: 124,
+    },
+    {
+      id: 'tc-002',
+      query: 'What was the AUROC achieved for radiology pneumonia detection?',
+      doc: 'Healthcare_Radiology_AI_Diagnostic.pdf',
+      expected_page: 'Page 2 (Clinical Demographics)',
+      grounding_score: 0.95,
+      latency_ms: 148,
+    },
+    {
+      id: 'tc-003',
+      query: 'Were there material weaknesses found during internal financial control audit?',
+      doc: 'Financial_Audit_Compliance_2025.docx',
+      expected_page: 'Page 4 (Sec 2.4)',
+      grounding_score: 0.96,
+      latency_ms: 110,
+    },
+    {
+      id: 'tc-004',
+      query: 'What was the adverse event rate in oncology patient cohort B dosing?',
+      doc: 'Scanned_Clinical_Trial_Notes.pdf',
+      expected_page: 'Page 1 (OCR Extracted)',
+      grounding_score: 0.92,
+      latency_ms: 175,
+    },
+  ],
 };
+

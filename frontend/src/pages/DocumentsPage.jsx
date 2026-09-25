@@ -54,9 +54,9 @@ export default function DocumentsPage() {
     const matchesSearch = doc.original_filename.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (doc.doc_metadata?.title && doc.doc_metadata.title.toLowerCase().includes(searchQuery.toLowerCase()));
     
-    if (filterType === 'PDF') return matchesSearch && doc.file_type.includes('pdf');
-    if (filterType === 'DOCX') return matchesSearch && !doc.file_type.includes('pdf');
-    if (filterType === 'OCR') return matchesSearch && doc.ocr_pages_count > 0;
+    if (filterType === 'PDF') return matchesSearch && (doc.file_type?.includes('pdf') ?? false);
+    if (filterType === 'DOCX') return matchesSearch && !(doc.file_type?.includes('pdf') ?? true);
+    if (filterType === 'OCR') return matchesSearch && (doc.ocr_pages_count || 0) > 0;
     return matchesSearch;
   });
 
